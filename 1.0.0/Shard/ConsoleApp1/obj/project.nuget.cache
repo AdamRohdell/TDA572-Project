@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "vLPksHlEkwy05hEpJGaSNWKd0yMkmPXoOcgBx9TOt0cdUQaY9HO2oPNCd4E/J0479SMcAp0bY0L9L33Bixhhng==",
+  "dgSpecHash": "EBTirzhjLso+kdUHRa6JTQTc1zq6jBY797VLUYvLu+r4uUiIveTu7uHAdnUlSU1BzypNrcV3IF7OZuQCaH/hkA==",
   "success": true,
   "projectFilePath": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/Shard.csproj",
   "expectedPackageFiles": [
-    "/Users/adamrohdell/.nuget/packages/sdl2-cs/2.0.0/sdl2-cs.2.0.0.nupkg.sha512"
+    "/Users/adamrohdell/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "/Users/adamrohdell/.nuget/packages/sdl2-cs/2.0.0/sdl2-cs.2.0.0.nupkg.sha512",
+    "/Users/adamrohdell/.nuget/packages/system.drawing.common/6.0.0/system.drawing.common.6.0.0.nupkg.sha512",
+    "/Users/adamrohdell/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
