@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vLPksHlEkwy05hEpJGaSNWKd0yMkmPXoOcgBx9TOt0cdUQaY9HO2oPNCd4E/J0479SMcAp0bY0L9L33Bixhhng==",
+  "success": true,
+  "projectFilePath": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/Shard.csproj",
+  "expectedPackageFiles": [
+    "/Users/adamrohdell/.nuget/packages/sdl2-cs/2.0.0/sdl2-cs.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
