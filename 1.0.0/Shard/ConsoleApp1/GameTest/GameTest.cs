@@ -44,7 +44,6 @@ namespace Shard
             Bootstrap.getInput().addListener(this);
             createShip();
 
-
         }
 
         public void handleInput(InputEvent inp, string eventType)
@@ -58,6 +57,15 @@ namespace Shard
                 asteroid.Transform.Y = inp.Y;
             }
 
+            if (eventType == "MouseDown" && inp.Button == 3)
+            {
+                Bootstrap.getSound().PlaySound("explosion.wav");
+            }
+
+            if (eventType == "MouseDown" && inp.Button == 2)
+            {
+                Bootstrap.getSound().PlaySound("bossfight.mp3");
+            }
 
 
         }

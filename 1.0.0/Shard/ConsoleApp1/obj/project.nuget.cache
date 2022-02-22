@@ -1,13 +1,29 @@
 {
   "version": 2,
-  "dgSpecHash": "EBTirzhjLso+kdUHRa6JTQTc1zq6jBY797VLUYvLu+r4uUiIveTu7uHAdnUlSU1BzypNrcV3IF7OZuQCaH/hkA==",
+  "dgSpecHash": "mg2MHFpN72so3prZmGNq0PQTmsUtrlAshBERBoTYd02kLw3ufVmsGaBOPV7lLEXKvfdjwES0SZpO/U6KiPYOUw==",
   "success": true,
-  "projectFilePath": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/Shard.csproj",
+  "projectFilePath": "G:\\Projects V2\\TDA572\\TDA572-Project\\1.0.0\\Shard\\ConsoleApp1\\Shard.csproj",
   "expectedPackageFiles": [
-    "/Users/adamrohdell/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/sdl2-cs/2.0.0/sdl2-cs.2.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/system.drawing.common/6.0.0/system.drawing.common.6.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\sdl2-cs\\2.0.0\\sdl2-cs.2.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\wmplib\\1.0.0\\wmplib.1.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\5.0.13\\microsoft.netcore.app.host.win-x86.5.0.13.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'WMPLib 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "WMPLib",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
