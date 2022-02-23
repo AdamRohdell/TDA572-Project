@@ -6,35 +6,58 @@
 *   
 */
 using System.Media;
-using WMPLib;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
+using System;
+using System.Runtime.InteropServices;
 
 namespace Shard
 {
     public class Sound        
     {
         private SoundPlayer player;
-        private WindowsMediaPlayer wPlayer;
+        private byte[][] soundFiles;
+        private MemoryStream ms;
+        private Dictionary<string, int> soundNames;
+        private int soundCount = 0;
+
+
 
         public Sound()
         {
+            soundFiles = new byte[32][];
+            soundNames = new Dictionary<string, int>();
             player = new SoundPlayer();
-            wPlayer = new WindowsMediaPlayer();
+        }
+
+
+        //Load all the sounds that you want to use in your game, up to 32 sounds can currently be loaded.
+        public void LoadSound(string path, string name)
+        {
+            if (soundCount == 32)
+            {
+                throw new System.Exception("Too many sounds loaded! Unload some sounds to free up space.");
+            }
+            Debug.Log(path);
+            soundFiles[soundCount] = File.ReadAllBytes(path);
+            soundNames.Add(name, soundCount);
+            soundCount++;
         }
 
         //Plays a .wav file asynchronosly from the specified filepath
-        public void PlaySound(string path)
+        public void PlaySound(string name)
         {
-            Debug.Log(path);
-            if (path.EndsWith(".mp3"))
-            {
-                wPlayer.URL = path;
-                wPlayer.controls.play();
-            } else if (path.EndsWith(".wav"))
-            {
-                player.SoundLocation = path;
-                player.Play();
-            }
-            
+            int index = soundNames[name];
+            ms = new MemoryStream(soundFiles[index]);
+            player.Stream = ms;
+            player.Play();
+        }
+
+
+        //Overloaded function to allow you to play sound at a specific location for spatial sound effects.
+        public void PlaySound(string name, int x, int y, GameObject player)
+        {
             
         }
 
@@ -45,10 +68,15 @@ namespace Shard
             player.PlaySync();
         }
 
+        public void UnloadSound(string name)
+        {
+            //TODO: ADD UNLOAD FUNCTIONALITY HERE
+        }
+
         public void Stop()
         {
-            wPlayer.controls.stop();
             player.Stop();
+            
         }
 
     }

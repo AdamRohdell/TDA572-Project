@@ -42,7 +42,9 @@ namespace Shard
         public override void initialize()
         {
             Bootstrap.getInput().addListener(this);
+            Bootstrap.getSound().LoadSound("explosion.wav", "explosion");
             createShip();
+
 
         }
 
@@ -59,12 +61,7 @@ namespace Shard
 
             if (eventType == "MouseDown" && inp.Button == 3)
             {
-                Bootstrap.getSound().PlaySound("explosion.wav");
-            }
-
-            if (eventType == "MouseDown" && inp.Button == 2)
-            {
-                Bootstrap.getSound().PlaySound("bossfight.mp3");
+                Bootstrap.getSound().PlaySound("explosion");
             }
 
 

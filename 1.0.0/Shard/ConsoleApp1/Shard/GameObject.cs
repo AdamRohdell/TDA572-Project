@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace Shard
 {
-    class GameObject
+    public class GameObject
     {
         private Transform3D transform;
         private bool transient;
