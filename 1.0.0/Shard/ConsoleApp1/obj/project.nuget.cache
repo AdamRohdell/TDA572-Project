@@ -1,14 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "46swaiEjQ37Q5aXmMNtHa5pM47Vi8wEqR0p6dfl7rwx7SBu+2SAlA5b5BhI4B4AUDwT2ZvDOmGRpK/0kiI/XSQ==",
+  "dgSpecHash": "AMlkSPXbYEWchInUmTvgoth4wRRqnhTg9jScbGs0vWYSOsUO8cYOnZV+tHWBvEFeRDnLxMzSIHRPS2/wH3Xvjw==",
   "success": true,
-  "projectFilePath": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/Shard.csproj",
+  "projectFilePath": "G:\\Projects V2\\TDA572-Project\\1.0.0\\Shard\\ConsoleApp1\\Shard.csproj",
   "expectedPackageFiles": [
-    "/Users/adamrohdell/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/sdl2-cs/2.0.0/sdl2-cs.2.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/system.drawing.common/6.0.0/system.drawing.common.6.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512",
-    "/Users/adamrohdell/.nuget/packages/wmplib/1.0.0/wmplib.1.0.0.nupkg.sha512"
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\sdl2-cs\\2.0.0\\sdl2-cs.2.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\wmplib\\1.0.0\\wmplib.1.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\adam_\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\5.0.13\\microsoft.netcore.app.host.win-x86.5.0.13.nupkg.sha512"
   ],
   "logs": [
     {
