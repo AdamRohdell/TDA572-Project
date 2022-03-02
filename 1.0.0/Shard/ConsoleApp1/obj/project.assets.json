@@ -210,26 +210,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\adam_\\.nuget\\packages\\": {}
+    "/Users/adamrohdell/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Projects V2\\TDA572-Project\\1.0.0\\Shard\\ConsoleApp1\\Shard.csproj",
+      "projectUniqueName": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/Shard.csproj",
       "projectName": "Shard",
-      "projectPath": "G:\\Projects V2\\TDA572-Project\\1.0.0\\Shard\\ConsoleApp1\\Shard.csproj",
-      "packagesPath": "C:\\Users\\adam_\\.nuget\\packages\\",
-      "outputPath": "G:\\Projects V2\\TDA572-Project\\1.0.0\\Shard\\ConsoleApp1\\obj\\",
+      "projectPath": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/Shard.csproj",
+      "packagesPath": "/Users/adamrohdell/.nuget/packages/",
+      "outputPath": "/Users/adamrohdell/Projects/GameEngine/1.0.0/Shard/ConsoleApp1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\adam_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/adamrohdell/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -273,30 +271,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x86",
-            "version": "[5.0.13, 5.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.102/RuntimeIdentifierGraph.json"
       }
     }
   },

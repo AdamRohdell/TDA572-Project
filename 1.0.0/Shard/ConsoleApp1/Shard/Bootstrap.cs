@@ -226,6 +226,9 @@ namespace Shard
                 // Render the screen.
                 Bootstrap.getDisplay().display();
 
+                // Update the sound engine.
+                Bootstrap.getSound().UpdateSpatialSounds();
+
                 timeInMillisecondsEnd = getCurrentMillis();
 
                 interval = timeInMillisecondsEnd - timeInMillisecondsStart;
