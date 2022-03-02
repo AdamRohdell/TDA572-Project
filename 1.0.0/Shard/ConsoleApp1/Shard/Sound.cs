@@ -8,6 +8,7 @@
 using System.Media;
 using System.IO;
 using System.Text;
+using SDL2;
 using System.Collections.Generic;
 using System;
 using System.Runtime.InteropServices;
@@ -23,12 +24,34 @@ namespace Shard
         private int soundCount = 0;
 
 
+        SDL.SDL_AudioSpec wavSpec;
+        UInt32 wavLength;
+        IntPtr wavBuffer;
+        SDL.SDL_AudioSpec returnedSpec;
+
+        uint deviceId;
+
 
         public Sound()
         {
+            /*
             soundFiles = new byte[32][];
             soundNames = new Dictionary<string, int>();
             player = new SoundPlayer();
+            */
+
+            SDL.SDL_LoadWAV("explosion.wav", out wavSpec, out wavBuffer, out wavLength);
+
+            deviceId = SDL.SDL_OpenAudioDevice(IntPtr.Zero, 0, ref wavSpec, out returnedSpec, 0);
+
+
+            SDL.SDL_PauseAudioDevice(deviceId, 0);
+
+          
+            SDL_mixer.Mix_OpenAudio(22050, SDL.AUDIO_S16SYS, 2, 4096);
+          
+
+   
         }
 
 
@@ -52,6 +75,16 @@ namespace Shard
             ms = new MemoryStream(soundFiles[index]);
             player.Stream = ms;
             player.Play();
+
+            
+        }
+
+        public void PlaySound()
+        {
+            int sucess = SDL.SDL_QueueAudio(deviceId, wavBuffer, wavLength);
+
+            // SDL.SDL_FreeWAV(wavBuffer);
+            Debug.Log(SDL_mixer.MIX_DEFAULT_CHANNELS.ToString());
         }
 
 

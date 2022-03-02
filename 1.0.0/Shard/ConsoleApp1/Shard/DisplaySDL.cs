@@ -84,6 +84,8 @@ namespace Shard
             trans.Wid = w;
             trans.recalculateCentre();
 
+           
+
             return ret;
 
         }

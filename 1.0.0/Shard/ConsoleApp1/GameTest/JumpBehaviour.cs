@@ -1,7 +1,8 @@
-﻿using Shard.Shard;
+﻿using Shard;
+using Shard.Shard;
 using System;
 
-namespace Shard.GameTest
+namespace GameTest
 {
     class JumpBehaviour : IBehaviour
     {

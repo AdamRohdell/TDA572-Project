@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shard.GameTest
+namespace GameTest
 {
     class DodgeBulletBehaviour : IBehaviour
     {
