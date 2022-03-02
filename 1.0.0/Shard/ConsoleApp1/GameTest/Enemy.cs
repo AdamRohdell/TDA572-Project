@@ -7,14 +7,34 @@ using System.Threading.Tasks;
 
 namespace Shard.GameTest
 {
-    class Enemy : GameObject, AIAgent
+    class Enemy : AIAgent
     {
-        public bool CheckIfBehaviourShouldChange()
+
+        public override void CheckIfBehaviourShouldChange()
         {
-            throw new NotImplementedException();
+            if (true)
+            {
+                currentBehaviour = currentBehaviour.ChangeToNextDefaultStrategy();
+            }
         }
 
-        public Enemy()
+        public Enemy(IBehaviour initialBehaviour) : base(initialBehaviour)
+        {
+
+        }
+
+        public override void update()
+        {
+            base.update();
+        }
+
+
+        public void Jump()
+        {
+
+        }
+
+        public void Move()
         {
 
         }

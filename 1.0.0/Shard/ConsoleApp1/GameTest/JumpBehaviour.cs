@@ -1,22 +1,27 @@
 ﻿using Shard.Shard;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shard.GameTest
 {
     class JumpBehaviour : IBehaviour
     {
-        public void ChangeStrategy()
+
+        private double timer = 0;
+        private double jumpInterval = 3;
+
+        public IBehaviour ChangeToNextDefaultStrategy()
         {
-            throw new NotImplementedException();
+            return new DodgeBulletBehaviour();
         }
 
-        public void ExecuteStrategy()
+        public void ExecuteStrategy(AIAgent agent)
         {
-            throw new NotImplementedException();
+            Enemy e = agent as Enemy;
+            timer += Bootstrap.getDeltaTime();
+            if (timer >= jumpInterval)
+            {
+                e.Jump();
+            }
         }
     }
 }

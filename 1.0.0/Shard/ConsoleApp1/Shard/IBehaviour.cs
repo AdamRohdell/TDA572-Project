@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Shard.Shard
 {
-    interface IBehaviour
+    public interface IBehaviour
     {
-        public void ExecuteStrategy();
+        public void ExecuteStrategy(AIAgent agent);
 
-        public void ChangeStrategy();
+        public IBehaviour ChangeToNextDefaultStrategy();
     }
 }

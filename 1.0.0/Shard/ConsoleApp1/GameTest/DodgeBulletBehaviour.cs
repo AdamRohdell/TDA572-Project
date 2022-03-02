@@ -9,12 +9,12 @@ namespace Shard.GameTest
 {
     class DodgeBulletBehaviour : IBehaviour
     {
-        public void ChangeStrategy()
+        public IBehaviour ChangeToNextDefaultStrategy()
         {
             throw new NotImplementedException();
         }
 
-        public void ExecuteStrategy()
+        public void ExecuteStrategy(AIAgent agent)
         {
             throw new NotImplementedException();
         }
