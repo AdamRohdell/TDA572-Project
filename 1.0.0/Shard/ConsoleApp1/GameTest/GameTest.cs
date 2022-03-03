@@ -7,22 +7,24 @@ namespace Shard
     class GameTest : Game, InputListener
     {
         GameObject background;
+
+        GameObject ship;
+        GameObject asteroid;
         public override void update()
         {
             //            Bootstrap.getDisplay().addToDraw(background);
 
             Bootstrap.getDisplay().showText("FPS: " + Bootstrap.getFPS(), 10, 10, 12, 255, 255, 255);
 
-
         }
 
         public void createShip()
         {
-            GameObject ship = new Spaceship();
+            ship = new Spaceship();
             Random rand = new Random();
             int offsetx = 0, offsety = 0;
 
-            GameObject asteroid;
+            
 
 
             asteroid = new Asteroid();
@@ -42,9 +44,10 @@ namespace Shard
         public override void initialize()
         {
             Bootstrap.getInput().addListener(this);
-          //  Bootstrap.getSound().LoadSound("explosion.wav", "explosion");
+            Bootstrap.getSound().LoadSound("explosion.wav", "explosion");
             createShip();
 
+            //Bootstrap.getSound().PlaySound("bossfight");
 
         }
 
@@ -61,7 +64,7 @@ namespace Shard
 
             if (eventType == "MouseDown" && inp.Button == 3)
             {
-                Bootstrap.getSound().PlaySound();
+                Bootstrap.getSound().PlaySound("explosion");
             }
 
 

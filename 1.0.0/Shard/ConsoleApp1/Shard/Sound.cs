@@ -29,10 +29,8 @@ namespace Shard
             sounds = new Dictionary<string, IntPtr>();
             spatialSoundInstances = new List<SpatialSoundInstance>();
 
-
-
-
             SDL_mixer.Mix_OpenAudio(22050, SDL.AUDIO_S16SYS, 8, 4096);
+
 
             SDL_mixer.Mix_ReserveChannels(3);
 
@@ -43,7 +41,9 @@ namespace Shard
         //Load all the sounds that you want to use in your game
         public void LoadSound(string path, string name)
         {
+            //   IntPtr chunk = SDL_mixer.Mix_LoadWAV(path);
             IntPtr chunk = SDL_mixer.Mix_LoadWAV(path);
+            Debug.Log(chunk.ToString());
             sounds.Add(name, chunk);
         }
 
