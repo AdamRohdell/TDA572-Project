@@ -6,18 +6,19 @@ namespace GameTest
 {
     class Dinosaur : GameObject, InputListener, CollisionHandler
     {
-        bool up, down, turnLeft, turnRight;
+        bool up, down;
 
 
         public override void initialize()
         {
 
-            this.Transform.X = 0.0f;
-            this.Transform.Y = 600.0f;
+            this.Transform.X = 50;
+            this.Transform.Y = Bootstrap.getDisplay().getHeight()-150;
             this.Transform.SpritePath = "ryu2.png";
             this.Transform.SpriteFrames = 9;
             this.Transform.SpriteFrameDelay = 100;
-            this.Transform.Scalex = 0.25;
+            this.Transform.Scalex = 0.2f;
+            this.Transform.Scaley = 0.8f;
 
             Bootstrap.getInput().addListener(this);
             up = false;

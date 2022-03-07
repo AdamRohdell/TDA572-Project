@@ -14,23 +14,23 @@ namespace Shard.Shard
     // Examples of this would include Move() and Jump() as seen in the Enemy-class in the GameTest-project.
 
 
-    public abstract class AIAgent : GameObject
+    public interface AIAgent
     {
 
-        protected IBehaviour currentBehaviour;
+   //     protected IBehaviour currentBehaviour;
 
         public abstract void CheckIfBehaviourShouldChange();
 
-        public AIAgent(IBehaviour behaviour) : base()
+       /* public AIAgent(IBehaviour behaviour) : base()
         {
             currentBehaviour = behaviour;
-        }
+        }*/
 
-        public override void update() {
+        /*public override void update() {
 
             CheckIfBehaviourShouldChange();
             currentBehaviour.ExecuteStrategy(this);
 
-        }
+        }*/
     }
 }

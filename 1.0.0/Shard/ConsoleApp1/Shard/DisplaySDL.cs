@@ -277,6 +277,7 @@ namespace Shard
 
             SDL.SDL_Rect windowRect;
             SDL.SDL_Rect textureRect;
+            SDL.SDL_RendererFlip flip;
 
             uint format;
             int access;
@@ -302,8 +303,15 @@ namespace Shard
                 textureRect.x = frame * textureRect.w;
                 
             }
+            if (trans.SpriteFlip)
+            {
+                flip = SDL.SDL_RendererFlip.SDL_FLIP_HORIZONTAL;
+            } else
+            {
+                flip = SDL.SDL_RendererFlip.SDL_FLIP_NONE;
 
-            SDL.SDL_RenderCopyEx(_rend, spriteBuffer[trans.SpritePath], ref textureRect, ref windowRect, (int)trans.Rotz, IntPtr.Zero, SDL.SDL_RendererFlip.SDL_FLIP_NONE);
+            }
+            SDL.SDL_RenderCopyEx(_rend, spriteBuffer[trans.SpritePath], ref textureRect, ref windowRect, (int)trans.Rotz, IntPtr.Zero, flip);
         }
 
     }

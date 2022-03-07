@@ -28,6 +28,7 @@ namespace Shard
         private string spritePath;
         private int spriteFrames;
         private int spriteFrameDelay;
+        private bool spriteFlip;
         private Vector forward;
         private Vector right, centre;
 
@@ -106,9 +107,13 @@ namespace Shard
             right.X = -1 * forward.Y;
             right.Y = forward.X;
 
+        }
 
-
-
+        public void updateSprite(string path, int frames, int frameDelay)
+        {
+            spritePath = path;
+            spriteFrameDelay = frameDelay;
+            spriteFrames = frames;
         }
 
 
@@ -147,6 +152,12 @@ namespace Shard
             get => spriteFrameDelay;
             set => spriteFrameDelay = value;
         }
+
+        public bool SpriteFlip
+        {
+            get => spriteFlip;
+            set => spriteFlip = value;
+        }
         public Vector Forward { get => forward; set => forward = value; }
         public int Wid { get => wid; set => wid = value; }
         public int Ht { get => ht; set => ht = value; }
@@ -157,5 +168,7 @@ namespace Shard
         public double Scaley { get => scaley; set => scaley = value; }
         public double Lx { get => lx; set => lx = value; }
         public double Ly { get => ly; set => ly = value; }
+
+
     }
 }
