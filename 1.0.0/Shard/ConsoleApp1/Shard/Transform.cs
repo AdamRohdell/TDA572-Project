@@ -26,6 +26,8 @@ namespace Shard
         private int wid, ht;
         private double scalex, scaley;
         private string spritePath;
+        private int spriteFrames;
+        private int spriteFrameDelay;
         private Vector forward;
         private Vector right, centre;
 
@@ -133,6 +135,17 @@ namespace Shard
         {
             get => spritePath;
             set => spritePath = value;
+        }
+
+        public int SpriteFrames
+        {
+            get => spriteFrames;
+            set => spriteFrames = value;
+        }
+        public int SpriteFrameDelay
+        {
+            get => spriteFrameDelay;
+            set => spriteFrameDelay = value;
         }
         public Vector Forward { get => forward; set => forward = value; }
         public int Wid { get => wid; set => wid = value; }

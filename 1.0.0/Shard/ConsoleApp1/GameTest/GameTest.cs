@@ -10,6 +10,7 @@ namespace Shard
 
         GameObject ship;
         GameObject asteroid;
+        GameObject dinosaur;
         public override void update()
         {
             //            Bootstrap.getDisplay().addToDraw(background);
@@ -41,11 +42,20 @@ namespace Shard
 
         }
 
+        public void spawnDinosaur()
+        {
+            dinosaur = new Dinosaur();
+            dinosaur.Transform.translate(0,0);
+        }
+
         public override void initialize()
         {
             Bootstrap.getInput().addListener(this);
             Bootstrap.getSound().LoadSound("explosion.wav", "explosion");
+            Bootstrap.getSound().LoadSound("bossfight.mp3", "boss");
+
             createShip();
+            spawnDinosaur();
 
             //Bootstrap.getSound().PlaySound("bossfight");
 
@@ -64,7 +74,12 @@ namespace Shard
 
             if (eventType == "MouseDown" && inp.Button == 3)
             {
-                Bootstrap.getSound().PlaySound("explosion");
+                Bootstrap.getSound().PlaySound("explosion", asteroid, ship);
+            }
+
+            if (eventType == "MouseDown" && inp.Button == 2)
+            {
+                Bootstrap.getSound().PlayMusic("boss", 0, ship, asteroid);
             }
 
 

@@ -23,6 +23,12 @@ namespace Shard
         private List<SpatialSoundInstance> spatialSoundInstances;
         private int soundCount = 0;
         private int defaultVolume = 100;
+        private List<int> availableChannels = new List<int>() {0,1,2,3,4,5,6,7 };
+        private SDL_mixer.ChannelFinishedDelegate channelFinished;
+
+        private bool spatialMusic = false;
+        private GameObject spatialMusicSource;
+        private GameObject spatialMusicTarget;
 
         public Sound()
         {
@@ -31,65 +37,99 @@ namespace Shard
 
             SDL_mixer.Mix_OpenAudio(22050, SDL.AUDIO_S16SYS, 8, 4096);
 
+            SDL_mixer.Mix_Init(SDL_mixer.MIX_InitFlags.MIX_INIT_MP3);
 
-            SDL_mixer.Mix_ReserveChannels(3);
+
+            channelFinished = x => { availableChannels.Add(x); };
+            SDL_mixer.Mix_ChannelFinished(channelFinished);
 
             SDL_mixer.Mix_Volume(-1, defaultVolume);
+
+
         }
 
 
         //Load all the sounds that you want to use in your game
         public void LoadSound(string path, string name)
         {
-            //   IntPtr chunk = SDL_mixer.Mix_LoadWAV(path);
-            IntPtr chunk = SDL_mixer.Mix_LoadWAV(path);
-            Debug.Log(chunk.ToString());
+
+            IntPtr chunk = IntPtr.Zero;
+          
+            if (path.EndsWith(".mp3"))
+            {
+                chunk = SDL_mixer.Mix_LoadMUS(path);
+
+            }
+            else if (path.EndsWith(".wav"))
+            {
+                chunk = SDL_mixer.Mix_LoadWAV(path);
+
+            }
+
             sounds.Add(name, chunk);
         }
 
 
         public void PlaySound(string name)
         {
+            SDL_mixer.Mix_PlayChannel(availableChannels[0], sounds[name], 0);
+            availableChannels.RemoveAt(0);
+            
+        }
 
-            SDL_mixer.Mix_PlayChannel(-1, sounds[name], 0);
-            
-            
+
+        // Function intended for playing soundtracks in games, not suitable for soudnd effects.
+        public void PlayMusic(string name, int loops)
+        {
+            SDL_mixer.Mix_PlayMusic(sounds[name], loops);
+            SDL_mixer.Mix_VolumeMusic(64);
+            spatialMusic = false;
+        }
+
+        public void PlayMusic(string name, int loops, GameObject soundSource, GameObject soundTarget)
+        {
+            SDL_mixer.Mix_PlayMusic(sounds[name], loops);
+            SDL_mixer.Mix_VolumeMusic((int)Math.Round(CalculateVolume(soundSource, soundTarget), MidpointRounding.AwayFromZero));
+            spatialMusic = true;
+            spatialMusicSource = soundSource;
+            spatialMusicTarget = soundTarget;
         }
 
         public void PlaySound(string name, int loopCount)
         {
-            SDL_mixer.Mix_PlayChannel(-1, sounds[name], loopCount);
+            SDL_mixer.Mix_PlayChannel(availableChannels[0], sounds[name], loopCount);
+            availableChannels.RemoveAt(0);
+            SDL_mixer.Mix_ChannelFinished((x => availableChannels.Add(x)));
         }
 
 
         //Overloaded function to allow you to play sound at a specific location for spatial sound effects.
         public void PlaySound(string name, GameObject soundSource, GameObject player)
         {
-            int nextAvailableChannel = 3;
 
-            if (SDL_mixer.Mix_Playing(0) == 0)
+            List<SpatialSoundInstance> temp = new List<SpatialSoundInstance>();
+            foreach (SpatialSoundInstance s in spatialSoundInstances)
             {
-                nextAvailableChannel = 0;
-            } else if (SDL_mixer.Mix_Playing(1) == 0)
-            {
-                nextAvailableChannel = 1;
-            } else if (SDL_mixer.Mix_Playing(2) == 0)
-            {
-                nextAvailableChannel = 2;
+                if (!availableChannels.Contains(s.channel))
+                {
+                    temp.Add(s);
+                }
             }
 
-            if (nextAvailableChannel == 3)
+            foreach(SpatialSoundInstance s in temp)
             {
-                throw new Exception("Too many spatial sounds active at once");
+                spatialSoundInstances.Remove(s);
+                SDL_mixer.Mix_Volume(s.channel, defaultVolume);
             }
 
-            SpatialSoundInstance temp = spatialSoundInstances.Find(x => x.channel == nextAvailableChannel);
-            if (temp != null)
-            {
-                spatialSoundInstances.Remove(temp);
-            }
+            spatialSoundInstances.Add(new SpatialSoundInstance(availableChannels[0], soundSource, player));
 
-            spatialSoundInstances.Add(new SpatialSoundInstance(nextAvailableChannel, soundSource, player));
+            double vol = CalculateVolume(soundSource, player);
+
+
+
+            SDL_mixer.Mix_PlayChannel(availableChannels[0], sounds[name], 0);
+            availableChannels.RemoveAt(0);
 
         }
 
@@ -120,18 +160,38 @@ namespace Shard
         {
             foreach(SpatialSoundInstance s in spatialSoundInstances)
             {
-                double Ypart = s.soundSource.Transform2D.Y - s.soundTarget.Transform2D.Y;
-                double Xpart = s.soundSource.Transform2D.X - s.soundTarget.Transform2D.X;
 
-                double distance = Math.Sqrt(Math.Pow(Ypart, 2) + Math.Pow(Xpart, 2)) + 0.1;
 
-                double volMultiplier = Math.Log2(distance);
+                double newVolume = CalculateVolume(s.soundSource, s.soundTarget);
 
-                double newVolume = 1 / volMultiplier;
-
-                SDL_mixer.Mix_Volume(s.channel, (int)Math.Round(newVolume, MidpointRounding.AwayFromZero));
+                SDL_mixer.Mix_Volume(s.channel, (int)Math.Round(defaultVolume / newVolume, MidpointRounding.AwayFromZero));
                 
             }
+
+            if (spatialMusic)
+            {
+                int newVol = (int)(defaultVolume / CalculateVolume(spatialMusicSource, spatialMusicTarget));
+
+                SDL_mixer.Mix_VolumeMusic(newVol);
+
+            }
+        }
+
+
+        private double CalculateVolume(GameObject a, GameObject b)
+        {
+            double Ypart = (a.Transform2D.Y + (a.Transform2D.Ht/2)) - (b.Transform2D.Y + b.Transform2D.Ht/2);
+            double Xpart = a.Transform2D.X + a.Transform2D.Wid/2 - (b.Transform2D.X + b.Transform2D.Wid / 2);
+
+            double distance = Math.Sqrt(Math.Pow(Ypart, 2) + Math.Pow(Xpart, 2)) + 0.1;
+
+            return distance / 100;
+
+        }
+
+        public void SetDefaultVolume(int vol)
+        {
+            defaultVolume = vol;
         }
 
 
@@ -144,14 +204,18 @@ namespace Shard
             public GameObject soundSource;
             public GameObject soundTarget;
 
+
             public SpatialSoundInstance(int c, GameObject sSource, GameObject sTarget)
             {
                 channel = c;
                 soundSource = sSource;
                 soundTarget = sTarget;
 
+
             }
         }
+
+
     }
 }
 

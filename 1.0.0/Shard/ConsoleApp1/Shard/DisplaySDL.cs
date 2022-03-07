@@ -224,7 +224,9 @@ namespace Shard
                     continue;
                 }
 
-                var sprite = loadTexture(trans);
+                renderSprite(trans);
+
+              /*  var sprite = loadTexture(trans);
 
                 sRect.x = 0;
                 sRect.y = 0;
@@ -236,7 +238,7 @@ namespace Shard
                 tRect.w = sRect.w;
                 tRect.h = sRect.h;
 
-                SDL.SDL_RenderCopyEx(_rend, sprite, ref sRect, ref tRect, (int)trans.Rotz, IntPtr.Zero, SDL.SDL_RendererFlip.SDL_FLIP_NONE);
+                SDL.SDL_RenderCopyEx(_rend, sprite, ref sRect, ref tRect, (int)trans.Rotz, IntPtr.Zero, SDL.SDL_RendererFlip.SDL_FLIP_NONE);*/
             }
 
             foreach (Circle c in _circlesToDraw)
@@ -265,6 +267,43 @@ namespace Shard
             _linesToDraw.Clear();
 
             base.clearDisplay();
+        }
+
+
+        public void renderSprite(Transform trans)
+        {
+            loadTexture(trans);
+
+
+            SDL.SDL_Rect windowRect;
+            SDL.SDL_Rect textureRect;
+
+            uint format;
+            int access;
+
+            windowRect.x = (int)trans.X;
+            windowRect.y = (int)trans.Y;
+            windowRect.w = (int)(trans.Wid * trans.Scalex);
+            windowRect.h = (int)(trans.Ht * trans.Scaley);
+            textureRect.x = 0;
+            textureRect.y = 0;
+
+            SDL.SDL_QueryTexture(spriteBuffer[trans.SpritePath], out format, out access, out textureRect.w, out textureRect.h);
+            
+            if (trans.SpriteFrames > 1)
+            {
+                int amountOfFrames = trans.SpriteFrames;
+                int delay = trans.SpriteFrameDelay;
+
+                textureRect.w /= amountOfFrames; //AMOUNT OF STATES IN THE SPRITESHEET.
+           
+                int frame = ((int)(Bootstrap.TimeElapsed*1000) / delay) % amountOfFrames;
+
+                textureRect.x = frame * textureRect.w;
+                
+            }
+
+            SDL.SDL_RenderCopyEx(_rend, spriteBuffer[trans.SpritePath], ref textureRect, ref windowRect, (int)trans.Rotz, IntPtr.Zero, SDL.SDL_RendererFlip.SDL_FLIP_NONE);
         }
 
     }
