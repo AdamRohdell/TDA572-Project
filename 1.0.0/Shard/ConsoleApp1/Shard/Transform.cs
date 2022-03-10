@@ -109,6 +109,18 @@ namespace Shard
 
         }
 
+        public static Vector lerp(Vector firstVector, Vector secondVector, float step)
+        {
+            float retX = lerp(firstVector.X, secondVector.X, step);
+            float retY = lerp(firstVector.Y, secondVector.Y, step);
+            return new Vector(retX, retY);
+        }
+
+        public static float lerp(float firstFloat, float secondFloat, float step)
+        {
+            return firstFloat * (1 - step) + secondFloat * step;
+        }
+
         public void updateSprite(string path, int frames, int frameDelay)
         {
             spritePath = path;

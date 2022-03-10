@@ -10,15 +10,16 @@ namespace GameTest
 {
     class Enemy : GameObject, AIAgent, CollisionHandler
     {
+        public Behaviour currentBehaviour { get; set; }
 
-      /*  public override void CheckIfBehaviourShouldChange()
-        {
-            if (true)
-            {
-                currentBehaviour = currentBehaviour.ChangeToNextDefaultStrategy();
-            }
-        }
-      */
+        /*  public override void CheckIfBehaviourShouldChange()
+          {
+              if (true)
+              {
+                  currentBehaviour = currentBehaviour.ChangeToNextDefaultStrategy();
+              }
+          }
+        */
         public Enemy()
         {
             this.Transform.X = Bootstrap.getDisplay().getWidth() - 150;
@@ -45,6 +46,9 @@ namespace GameTest
             MyBody.PassThrough = false;
 
             addTag("Enemy");
+
+            currentBehaviour = new JumpBehaviour(this);
+            
         }
 
         public override void update()
@@ -79,6 +83,11 @@ namespace GameTest
         }
 
         public void onCollisionStay(PhysicsBody x)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CheckIfBehaviourShouldChange(AIAgent.AIAgentChangeHandler handler)
         {
             throw new NotImplementedException();
         }

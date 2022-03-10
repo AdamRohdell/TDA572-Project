@@ -19,7 +19,9 @@ namespace Shard.Shard
 
    //     protected IBehaviour currentBehaviour;
 
-        public abstract void CheckIfBehaviourShouldChange();
+        Behaviour currentBehaviour { get; }
+
+        public void CheckIfBehaviourShouldChange(AIAgentChangeHandler handler);
 
        /* public AIAgent(IBehaviour behaviour) : base()
         {
@@ -32,5 +34,7 @@ namespace Shard.Shard
             currentBehaviour.ExecuteStrategy(this);
 
         }*/
+
+        public delegate bool AIAgentChangeHandler();
     }
 }

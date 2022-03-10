@@ -4,25 +4,21 @@ using System;
 
 namespace GameTest
 {
-    class JumpBehaviour : IBehaviour
+    class JumpBehaviour : Node
     {
 
         private double timer = 0;
         private double jumpInterval = 3;
 
-        public IBehaviour ChangeToNextDefaultStrategy()
+        public JumpBehaviour()
         {
-            return new DodgeBulletBehaviour();
+
         }
 
-        public void ExecuteStrategy(AIAgent agent)
+        public override NodeState Evaluate()
         {
-            Enemy e = agent as Enemy;
-            timer += Bootstrap.getDeltaTime();
-            if (timer >= jumpInterval)
-            {
-                e.Jump();
-            }
+            state = NodeState.RUNNING;
+            return state;
         }
     }
 }
